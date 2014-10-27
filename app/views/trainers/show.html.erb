@@ -1,3 +1,27 @@
 <h3>Trainer</h3>
 <p>Name: <%= @trainer.name if @trainer.name %></p>
 <p>Email: <%= @trainer.email if @trainer.email %></p>
+
+<% if @trainer.pokemons.length != 0 %>
+	<h4>Pokemons:</h4>
+	    <% @trainer.pokemons.each do |pokemon| %>
+	        <% if @trainer == current_trainer or pokemon.health != 0%>
+	            <div><strong><%= pokemon.name %></strong><br>
+	            Level: <%= pokemon.level %><br>
+	            Health: <%= pokemon.health %>
+
+	            <%= button_to "Damage!", damage_path(id: pokemon), :class => "button medium", :method => :patch %>
+	            </div>
+
+	            <% if @trainer == current_trainer %>
+	                <%= button_to "Heal", heal_path(id: pokemon), :class => "button medium", :method => :patch %>
+	            <% end %>
+	      <% end %>
+	    <% end %>
+	Note: If no Pokemons are displayed here, this trainer has one or more dead pokemons.
+<% elsif @trainer.name %>
+	<h5> <%= @trainer.name %> does not have any pokemons!</h5>
+<% end %>
+<% if @trainer == current_trainer %>
+	<%= button_to "Create New Pokemon", new_pokemon_path, :class => "button medium", :method => :get %>
+<% end %>

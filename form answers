@@ -1,0 +1,17 @@
+0:
+
+Because we do not have a controller for a pokemon model that we have just created.
+
+1:
+
+Within the home_controller.rb, we can see that we are using trainerless_pokemon.sample to pull the random Pokemon from all trainerless pokemons. The common factor between all the Pokemons is precisely this; they do not have trainers.
+
+2a: It creates a button of css class "button medium," which will create a patch request based on capture_path. capture_path(id: @pokemon) takes the current pokemon and passes its id as an argument, which will be taken by capture function in the controller.
+
+2b: It is because the variable abstracts away the path. That is, our variable "pokemons#capture" overshadows our URI "pokemons/capture" and therefore the value given as URI no longer affects the execution.
+
+3: Doge (wow very create)
+
+4: I passed in the path to trainer, with trainer_id of the current pokemon being damaged  as an additional argument.
+
+5. flash essentially gives us a way to have temporary objects. One example of this "temporary object" is our error message that should be displayed on new-pokemon form, which should pop up and then should be automatically removed. application.html.erb's job is essentially define how this "temporary object" will be rendered.
